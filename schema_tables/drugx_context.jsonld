@@ -1,0 +1,16 @@
+{
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "obo":"http://purl.obolibrary.org/obo/",
+    "schema":"http://schema.org/",
+    "@vocab":"http://schema.org/",
+    "syn" : "http://localhost:8000/syn-schema.html#",
+    "sage.comm" : "http://localhost:8000/sage-community-schema.html#",
+    "sage.cancer": "http://localhost:8000/cancer-schema.html#",
+    "sage.exp.data": "http://localhost:8000/experimental-data-schema.html#",
+    "sage.proc": "http://localhost:8000/process-schema.html#",
+    "sage.drugx": "http://localhost:8000/drugx-schema.html#",
+    "organism":{"@id":"sage.exp.data:organism", "@type":"Thing"},
+    "disease":{"@id":"sage.exp.data:Diagnosis", "@type":"@vocab"},
+    "symptom":{"@id":"sage.exp.data:Symptom", "@type":"@vocab"},
+    "tables":"@nest"
+}

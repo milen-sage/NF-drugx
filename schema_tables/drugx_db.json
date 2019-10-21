@@ -1,0 +1,372 @@
+{
+   "@context": "https://localhost:8000/contexts/drugx_context.jsonld",
+   "@id": "https://www.synapse.org/syn16941818",
+   "synapse_id": "syn16941818",
+   "name": "drugx",
+   "ignore_attributes": [
+      "synapse_id",
+      "primary_key",
+      "@context",
+      "columns"
+   ],
+   "tables": {
+      "disease": {
+         "@context": "https://localhost:8000/contexts/disease_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name",
+            "efo_id"
+         ],
+         "disease_name": "name",
+         "disease_id": "index",
+         "disease_efo_id": "efo_id",
+         "synapse_id": "syn18506930"
+      },
+      "symptom": {
+         "@context": "https://localhost:8000/contexts/symptom_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name",
+            "efo_id"
+         ],
+         "symptom_name": "name",
+         "symptom_efo_id": "efo_id",
+         "symptom_id": "index",
+         "synapse_id": "syn18459320"
+      },
+      "organism": {
+         "@context": "https://localhost:8000/contexts/organism_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name"
+         ],
+         "organism_name": "name",
+         "organism_id": "index",
+         "synapse_id": "syn18506932"
+      },
+      "cell_line": {
+         "@context": "https://localhost:8000/contexts/cell_line_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name",
+            "cellosaurus_id",
+            "type",
+            "ATCC"
+         ],
+         "cell_line_name": "name",
+         "cell_line_type": "type",
+         "cellosaurus_id": "cellosaurus_id",
+         "cell_line_id": "index",
+         "synapse_id": "syn18506933"
+      },
+      "symptom_model": {
+         "@context": "https://localhost:8000/contexts/symptom_model_SOP.jsonld",
+         "primary_key": "index",
+         "columns": [
+            "symptom_id",
+            "model_id"
+         ],
+         "symptom_name": {
+            "attribute_of": "symptom",
+            "connected_by": "symptom_id"
+         },
+         "model_name": {
+            "attribute_of": "model",
+            "connected_by": "model_id"
+         },
+         "synapse_id": "syn18506934"
+      },
+      "disease_model": {
+         "@context": "https://localhost:8000/contexts/disease_model_SOP.jsonld",
+         "primary_key": "index",
+         "columns": [
+            "disease_id",
+            "model_id"
+         ],
+         "disease_name": {
+            "attribute_of": "disease",
+            "connected_by": "disease_id"
+         },
+         "model_name": {
+            "attribute_of": "model",
+            "connected_by": "model_id"
+         },
+         "synapse_id": "syn18506935"
+      },
+      "model": {
+         "@context": "https://localhost:8000/contexts/model_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name",
+            "organism_id",
+            "cell_line_id",
+            "type"
+         ],
+         "model_id": "index",
+         "model_name": "name",
+         "model_type": "type",
+         "organism_name": {
+            "attribute_of": "organism",
+            "connected_by": "organism_id"
+         },
+         "cell_line_name": {
+            "attribute_of": "cell_line",
+            "connected_by": "cell_line_id"
+         },
+         "synapse_id": "syn18506936"
+      },
+      "experiment": {
+         "@context": "https://localhost:8000/contexts/experiment_SOP.jsonld",
+         "primary_key": "index",
+         "columns": [
+            "efficacy_id",
+            "intervention_id",
+            "model_id",
+            "study_id",
+            "cohort_size"
+         ],
+         "efficacy_code": {
+            "attribute_of": "efficacy",
+            "connected_by": "efficacy_id"
+         },
+         "intervention_name": {
+            "attribute_of": "experimental_intervention",
+            "connected_by": "intervention_id"
+         },
+         "model_name": {
+            "attribute_of": "model",
+            "connected_by": "model_id"
+         },
+         "study_synapse_id": {
+            "attribute_of": "study",
+            "connected_by": "study_id"
+         },
+         "cohort_size": "cohort_size",
+         "synapse_id": "syn18506937"
+      },
+      "study": {
+         "@context": "https://localhost:8000/contexts/study_SOP.jsonld",
+         "primary_key": "synapse_id",
+         "columns": [
+            "synapse_id",
+            "funder_id"
+         ],
+         "study_synapse_id": "synapse_id",
+         "funder": {
+            "attribute_of": "funder",
+            "connected_by": "funder_id"
+         },
+         "study_id": "index",
+         "synapse_id": "syn18506938"
+      },
+      "funder": {
+         "@context": "https://localhost:8000/contexts/funder_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name"
+         ],
+         "funder": "name",
+         "funder_id": "index",
+         "synapse_id": "syn18506939"
+      },
+      "experimental_intervention": {
+         "@context": "https://localhost:8000/contexts/experimental_intervention_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name",
+            "description",
+            "type"
+         ],
+         "intervention_name": "name",
+         "intervention_description": "description",
+         "intervention_type": "type",
+         "experimental_intervention_id": "index",
+         "synapse_id": "syn18506940"
+      },
+      "efficacy": {
+         "@context": "https://localhost:8000/contexts/efficacy_SOP.jsonld",
+         "primary_key": "code",
+         "columns": [
+            "code",
+            "description",
+            "type"
+         ],
+         "efficacy_code": "code",
+         "efficacy_description": "description",
+         "efficacy_type": "type",
+         "efficacy_id": "index",
+         "synapse_id": "syn18506941"
+      },
+      "drug_screen": {
+         "@context": "https://localhost:8000/contexts/drug_screen_SOP.jsonld",
+         "primary_key": "drug_screen_assay_id",
+         "columns": [
+            "experiment_id",
+            "response",
+            "response_unit",
+            "response_type",
+            "drug_screen_assay_id"
+         ],
+         "experiment_id": {
+            "attribute_of": "experiment",
+            "connected_by": "index"
+         },
+         "drug_screen_assay_id": {
+            "attribute_of": "drug_assay",
+            "connected_by": "drug_screen_assay_id"
+         },
+         "response":"response",
+         "response_unit": "response_unit",
+         "response_type": "response_type",
+         "synapse_id": "syn18506942"
+      },
+      "drug_assay": {
+         "@context": "https://localhost:8000/contexts/drug_screen_assay_SOP.jsonld",
+         "primary_key": "index",
+         "columns": [
+            "drug_id",
+            "dosage",
+            "dosage_note",
+            "dosage_unit",
+            "drug_screen_assay_id",
+            "drug_assay_id",
+            "drug_screen_id"
+         ],
+         "drug_name": {
+            "attribute_of": "drug",
+            "connected_by": "name"
+         },
+         "dosage": "dosage",
+         "dosage_unit": "dosage_unit",
+         "dosage_note": "dosage_note",
+         "drug_assay_id": "drug_assay_id",
+         "drug_screen_id": "drug_screen_id",
+         "drug_screen_assay_id": "drug_screen_assay_id",
+         "synapse_id": "syn18506943"
+      },
+      "drug": {
+         "@context": "https://localhost:8000/contexts/drug_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "name",
+            "DT_explorer_internal_id",
+            "inchikey",
+            "inchi",
+            "std_smiles"
+         ],
+         "drug_name": "name",
+         "DT_explorer_internal_id": "DT_explorer_internal_id",
+         "inchikey": "inchikey",
+         "inchi": "inchi",
+         "std_smiles": "std_smiles",
+         "synapse_id": "syn18506944"
+      },
+      "drug_synonyms": {
+         "@context": "https://localhost:8000/contexts/drug_synonyms_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "drug_id",
+            "DT_explorer_internal_id",
+            "name"
+         ],
+         "drug_synonym_name": "name",
+         "drug_synonym_DT_explorer_internal_id": "DT_explorer_internal_id",
+         "drug_id": {
+            "attribute_of": "drug",
+            "connected_by": "index"
+         },
+         "synapse_id": "syn18506947"
+      },
+      "drug_target_gene": {
+         "@context": "https://localhost:8000/contexts/drug_target_gene_SOP.jsonld",
+         "primary_key": "index",
+         "columns": [
+            "drug_id",
+            "gene_id",
+            "n_quantitative",
+            "cv",
+            "IC50_nM",
+            "AC50_nM",
+            "EC50_nM",
+            "Ki_nM",
+            "Kd_nM",
+            "n_qualitative",
+            "total_n",
+            "confidence",
+            "pchembl_d",
+            "known_selectivity_index",
+            "pchembl_t",
+            "potency_nM"
+         ],
+         "drug_name": {
+            "attribute_of": "drug",
+            "connected_by": "name"
+         },
+         "cv": "cv",
+         "n_quantitative": "n_quantitative",
+         "IC50_nM": "IC50_nM",
+         "AC50_nM": "AC50_nM",
+         "EC50_nM": "EC50_nM",
+         "Ki_nM": "Ki_nM",
+         "Kd_nM": "Kd_nM",
+         "total_n": "total_n",
+         "confidence": "confidence",
+         "pchembl_d": "pchembl_d",
+         "known_selectivity_index": "known_selectivity_index",
+         "pchembl_t": "pchembl_t",
+         "potency_nM": "potency_nM",
+         "synapse_id": "syn18506948"
+      },
+      "gene": {
+         "@context": "https://localhost:8000/contexts/gene_SOP.jsonld",
+         "primary_key": "name",
+         "columns": [
+            "gene_id",
+            "ensembl_id",
+            "name"
+         ],
+         "gene_name": "name",
+         "gene_id": "index",
+         "ensembl_id": "ensembl_id",
+         "synapse_id": "syn18506969"
+      },
+      "dysregulated_gene": {
+         "@context": "https://localhost:8000/contexts/dysregulated_gene_SOP.jsonld",
+         "primary_key": "gene_id",
+         "columns": [
+            "gene_id",
+            "gene_perturbation_method",
+            "transcript_perturbation",
+            "allele_frequency",
+            "gene_perturbation_type"
+         ],
+         "gene_name": {
+            "attribute_of": "gene",
+            "connected_by": "name"
+         },
+         "gene_id": "index",
+         "gene_perturbation_method": "gene_perturbation_method",
+         "transcript_perturbation": "transcript_perturbation",
+         "allele_frequency": "allele_frequency",
+         "gene_perturbation_type": "gene_perturbation_type",
+         "synapse_id": "syn18506970"
+      },
+      "model_dysregulated_gene": {
+         "@context": "https://localhost:8000/contexts/model_dysregulated_gene_SOP.jsonld",
+         "primary_key": "index",
+         "columns": [
+            "dysregulated_gene_id",
+            "model_id"
+         ],
+         "model_id": {
+            "attribute_of": "model",
+            "connected_by": "index"
+         },
+         "dysregulated_gene_id": {
+            "attribute_of": "dysregulated_gene",
+            "connected_by": "gene_id"
+         },
+         "synapse_id": "syn18506971"
+      }
+   }
+}
